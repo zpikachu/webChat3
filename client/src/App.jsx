@@ -10,8 +10,8 @@ const App = () => {
       <Router>
         <Routes>
           <Route exact path={"/home"} element={<Home />} />
-          <Route path={"/"} element={<SignUp />} />
-          <Route path={"/login"} element={<Login />} />
+          <Route path={"/register"} element={<SignUp />} />
+          <Route path={"/"} element={<Login />} />
         </Routes>
       </Router>
     </div>
@@ -19,21 +19,3 @@ const App = () => {
 }
 
 export default App;
-
-
-
-// import React from 'react';
-// import toast, { Toaster } from 'react-hot-toast';
-
-// const notify = () => toast('Here is your toast.');
-
-// const App = () => {
-//   return (
-//     <div>
-//       <button onClick={notify}>Make me a toast</button>
-//       <Toaster />
-//     </div>
-//   );
-// };
-
-// export default App;

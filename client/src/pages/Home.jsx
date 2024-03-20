@@ -7,6 +7,8 @@ import { Container, Grid } from '@mui/material';
 import Header from '../components/chat/Header';
 import Sidebar from '../components/chat/Sidebar';
 import Mainbar from '../components/chat/Mainbar';
+import bgVideo from '../assets/BG3.mp4'; // Adjust the path as per your project structure
+import error from '../assets/404-error.png';
 
 const socket = io('http://localhost:3000');
 
@@ -29,7 +31,7 @@ const Home = () => {
       });
     setUsers(prevUsers => prevUsers.filter(u => u.user_id !== userId));
     setUser(null);
-    navigate('/login');
+    navigate('/');
   }
 
   const scrollToBottom = () => {
@@ -37,7 +39,7 @@ const Home = () => {
   };
 
   const send = (message) => {
-    console.log(message);
+    // console.log(message);
     socket.emit('send_message', message, user.user_id, user.room_id, user.username);
   }
 
@@ -75,8 +77,12 @@ const Home = () => {
   }, [users]);
 
   return (
-    <div style={{ backgroundColor: "black", height: "100vh" }}>
-     { user?(<Container maxWidth="xl" style={{ height: "100%", overflow: "hidden" }}>
+    <div style={{ backgroundColor: "transparent", height: "100vh" }}>
+      <video autoPlay loop muted style={{ position: "absolute", top: "0", left: "0", width: "100%", height: "100%", objectFit: "cover", zIndex: "1",opacity: "0.2"  }}>
+        <source src={bgVideo} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      {user?(<Container maxWidth="xl" style={{ height: "100%", overflow: "hidden" }}>
         <Grid container spacing={0} style={{ height: "100%" }}>
           {/* Header */}
           <Grid item xs={12}>
@@ -93,7 +99,10 @@ const Home = () => {
             <Mainbar msges={msges} user={user} messagesEndRef={messagesEndRef} send={send} />
           </Grid>
         </Grid>
-      </Container>):<h1 style={{textAlign:"center",color:"whitesmoke"}}>404 NOT FOUND</h1>}
+      </Container>):(<div
+          style={{display:"flex",justifyContent:"center",alignItems:"center",height:"100%"}}>
+            <img src={error} alt="404 EROR" style={{height:"200px",width:"200px"}}/>
+          </div>)}
     </div>
   );
 };

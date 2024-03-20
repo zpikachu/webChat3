@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import bgVideo from "../assets/BG.mp4"; // Import your background video here
 import toast, { Toaster } from "react-hot-toast";
+import { Button } from "@mui/material";
 
 export default function SignInSide() {
   const [userInfo, setUserInfo] = useState(null);
@@ -70,6 +71,8 @@ export default function SignInSide() {
     marginTop: "24.12px", // Adjusted margin top
     marginBottom: "6.67px", // Adjusted margin bottom
     textAlign: "center",
+    fontFamily:"cursive",
+    color:"whitesmoke"
   };
 
   const formStyle = {
@@ -118,7 +121,7 @@ export default function SignInSide() {
           ...formStyle,
         }}
       >
-        <h1 style={{ textAlign: "center", marginBottom: "20px" }}>SignIn</h1>
+        <h1 style={{ textAlign: "center", marginBottom: "20px",fontFamily:"cursive" }}>SignIn</h1>
         <div style={{ marginBottom: "20px" }}>
           <label htmlFor="username" style={{ color: "#fff" }}>
             User Name
@@ -161,11 +164,11 @@ export default function SignInSide() {
             style={inputStyle}
           />
         </div>
-        <button type="submit" style={{ ...ButtonStyle, marginTop: "20px" }}>
+        <Button type="submit" sx={{ ...ButtonStyle, marginTop: "20px" }}>
           Login In
-        </button>
-        <div style={{ marginTop: "20px", textAlign: "center" }}>
-          <Link to={"/"} style={{ color: "#1976d2", textDecoration: "none" }}>
+        </Button>
+        <div style={{ marginTop: "20px", textAlign: "center",fontFamily:"cursive" }}>
+          <Link to={"/register"} >
             Don't have an account? Register
           </Link>
         </div>

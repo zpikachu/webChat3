@@ -18,7 +18,7 @@ const Message = ({ sender, message, timeStamp, isCurrentUser }) => {
         justifyContent: "flex-start",
         alignItems: "flex-start",
         margin: "0px 24px 8px 24px", // 20% smaller
-        position: "relative"
+        position: "relative",
       }}
     >
       <div
@@ -31,9 +31,13 @@ const Message = ({ sender, message, timeStamp, isCurrentUser }) => {
           maxWidth: "64%", // 20% smaller
           boxShadow: "0px 1.6px 4px rgba(0, 0, 0, 0.1)", // 20% smaller
           wordWrap: "break-word",
+          marginTop:'24px'
         }}
       >
-        <Typography sx={{ fontSize: "0.8rem" }}>{isExpanded ? message : truncatedMessage}</Typography> {/* 20% smaller */}
+        <Typography sx={{ fontSize: "0.8rem" }}>
+          {isExpanded ? message : truncatedMessage}
+        </Typography>{" "}
+        {/* 20% smaller */}
         <Typography
           variant="caption"
           sx={{ color: "#ffd700", fontSize: "0.56rem" }} // 20% smaller
@@ -46,11 +50,10 @@ const Message = ({ sender, message, timeStamp, isCurrentUser }) => {
         >
           {format(new Date(timeStamp), "hh:mm")}
         </Typography>
-
         {message.length > 500 && (
-          <Button variant="text" size="small" onClick={toggleExpand}>
+          <Typography variant="text" sx={{color: "#ffd700",float:"right",marginTop:"0.5rem", fontSize: "0.48rem",cursor:"pointer" }}  onClick={toggleExpand}>
             {isExpanded ? "Read less" : "Read more"}
-          </Button>
+           </Typography>
         )}
       </div>
     </div>

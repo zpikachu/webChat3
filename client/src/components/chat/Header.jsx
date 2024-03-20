@@ -6,39 +6,36 @@ const Header = ({ user, logout }) => {
     <Paper
       style={{
         position: "fixed",
+        border:"none",
         top: 0,
         left: 0,
         right: 0,
-        height: "60px", // Added height
+        height: "70px", // Added height
         padding: "20px",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        backgroundColor: "rgba(255, 255, 255, 0.2)",
-        backdropFilter: "blur(10px)",
-        // border: '2px solid rgba(255, 255, 255, 0.1)',
-        boxShadow: "0 0 10px rgba(255, 255, 255, 0.5)",
-        zIndex: 9999, // Set a high z-index value
-
-        backgroundColor: "green",
+        backgroundColor: "#1a1a1a",
+        // backdropFilter: "blur(10px)",
+        // boxShadow: "0 0 10px rgba(255, 255, 255, 0.5)",
+        // zIndex: 2, // Set a high z-index value
       }}
     >
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <div style={{ display: "flex", alignItems: "center"}}>
         <Avatar
           src={user?.profile}
           alt="User Profile"
           sx={{ width: 30, height: 30, marginRight: "10px" }}
         />
-        <Typography sx={{ color: "black" }}>Hello, {user?.username}</Typography>
+        <Typography sx={{ color: "whitesmoke",fontFamily:"cursive" }}>Hello, {user?.username}</Typography>
       </div>
       <Button 
-  variant="contained" 
-  onClick={() => logout(user?.user_id)}
-  sx={{ width: '100px', height: '28px' }} // Adjust the width and height as needed
->
-  Logout
-</Button>
-
+        variant="contained" 
+        onClick={() => logout(user?.user_id)}
+        sx={{ minWidth: '80px', height: '36px', fontSize: '0.8rem', fontWeight: 'bold', backgroundColor: "#1976d2", color: "#fff", '&:hover': { backgroundColor: "#1565c0" } }} // Adjusted button dimensions and styling
+      >
+        Logout
+      </Button>
     </Paper>
   );
 };

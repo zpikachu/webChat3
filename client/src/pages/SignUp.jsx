@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import bgVideo from "../assets/BG.mp4";
+import { Button } from "@mui/material";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -78,7 +79,7 @@ const SignUp = () => {
       .then(async (response) => {
         if (response.data.success) {
           toast.success(response.data.message);
-          navigate("/login");
+          navigate("/");
         } else toast.error(response.data.message);
       })
       .catch((error) => console.log(error));
@@ -141,6 +142,8 @@ const SignUp = () => {
     marginTop: "20px",
     marginBottom: "5px",
     textAlign: "center",
+    fontFamily:"cursive",
+    color:"whitesmoke"
   };
 
   return (
@@ -187,7 +190,7 @@ const SignUp = () => {
             fontSize: "13.33px",
           }}
         >
-          <h1 style={{ textAlign: "center", marginBottom: "20px" }}>SignUp</h1>
+          <h1 style={{ textAlign: "center", marginBottom: "20px",fontFamily:"cursive" }}>SignUp</h1>
           {["Email", "Username", "Password"].map((field) => (
             <div key={field}>
               <label>{field}:</label>
@@ -202,17 +205,16 @@ const SignUp = () => {
               />
             </div>
           ))}
-          <button
+          <Button
             type="button"
             onClick={handleSendOtp}
-            style={{ ...buttonStyle }}
+            sx={{ ...buttonStyle }}
           >
             SignUp
-          </button>
-          <div style={{ textAlign: "center", marginTop: "20px" }}>
+          </Button>
+          <div style={{ textAlign: "center", marginTop: "20px" ,fontFamily:"cursive" , color: "#1976d2" }}>
             <Link
-              to={"/login"}
-              style={{ textDecoration: "none", color: "#1976d2" }}
+              to={"/"}
             >
               Already have an account? SignIn
             </Link>
@@ -253,21 +255,13 @@ const SignUp = () => {
             maxLength="4"
             autoComplete="one-time-code"
           />
-          <button
+          <Button
             type="button"
             onClick={handleVerify}
-            style={buttonStyle}
+            sx={buttonStyle}
           >
             Verify
-          </button>
-          <div style={{ textAlign: "center", marginTop: "20px" }}>
-            <Link
-              to={"/login"}
-              style={{ textDecoration: "none", color: "#1976d2" }}
-            >
-              Already have an account? SignIn
-            </Link>
-          </div>
+          </Button>
         </form>
       )}
 

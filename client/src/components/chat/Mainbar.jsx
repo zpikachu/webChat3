@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import { Typography, Paper, Grid } from "@mui/material";
+import { Typography, Grid } from "@mui/material";
 import Message from "./Message";
 import SendMessageForm from "./SendMessageForm";
-
+import { Scrollbar } from 'react-scrollbars-custom';
+import logo from '../../assets/no-message.png';
 const Mainbar = ({ msges, user, messagesEndRef, send }) => {
   useEffect(() => {
     // Scroll to the bottom of the container when messages change
@@ -16,28 +17,20 @@ const Mainbar = ({ msges, user, messagesEndRef, send }) => {
       item
       xs={10}
       style={{
-        position:"absolute",
-        top: "60px",
-        bottom: "40px",
+        position: "absolute",
+        top: "70px",
+        bottom: "45px",
         right: "0",
         width: "75%",
-        // height: "80vh",
-        display: "flex",
-        flexDirection: "row",
-
-        backgroundColor:"red"
       }}
     >
-      <Paper
+      <Scrollbar
         style={{
-          flexGrow: 1,
-          overflowY: "auto",
-          backgroundColor: "rgba(255, 255, 255, 0.2)",
+          width: "100%",
+          height: "100%",
+          backgroundColor: "#333333",
           backdropFilter: "blur(10px)",
-          // border: "2px solid rgba(255, 255, 255, 0.1)",
           boxShadow: "0 0 10px rgba(255, 255, 255, 0.5)",
-          //  position: 'relative',
-          // paddingBottom: "90px",
         }}
       >
         {msges && msges.length > 0 ? (
@@ -51,15 +44,13 @@ const Mainbar = ({ msges, user, messagesEndRef, send }) => {
             />
           ))
         ) : (
-          <Typography
-            variant="body1"
-            style={{ textAlign: "center", marginTop: "20px" }}
-          >
-            No messages yet
-          </Typography>
+          <div
+          style={{display:"flex",justifyContent:"center",alignItems:"center",height:"80vh"}}>
+            <img src={logo} alt="No messages yet" style={{height:"200px",width:"200px"}}/>
+          </div>
         )}
         <div ref={messagesEndRef} />
-      </Paper>
+      </Scrollbar>
       <SendMessageForm send={send} />
     </Grid>
   );
